@@ -12,10 +12,15 @@ const createFakeProduct = () => ({
 
 exports.seed = async function(knex, Promise) {
   // Users
-  const fakeUsers = [];
-  const desiredFakeUsers = 10;
-  for (let i = 0; i < desiredFakeUsers; i++) {
-    fakeUsers.push(createFakeProduct());
+  let fakeProducts = [];
+  const quantity = 1000;
+  for (let x = 0; x < 10000; x++) {
+    for (let i = 0; i < quantity; i++) {
+      fakeProducts.push(createFakeProduct());
+    }
+    await knex("description").insert(fakeProducts);
+    setTimeout(() => {
+      fakeProducts = [];
+    }, 0);
   }
-  await knex("description").insert(fakeUsers);
 };
