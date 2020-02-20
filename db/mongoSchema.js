@@ -3,12 +3,12 @@ const Schema = mongoose.Schema;
 
 const DataSchema = new Schema(
   {
-    //   _id: Number,
-    productName: String,
-    productDescription: String,
+    product_id: Number,
+    product_name: String,
+    product_description: String,
     price: Number,
-    category_id: Number,
-    productRatings: Number
+    category_id: String,
+    rating: Number
   },
   { collection: "descriptions" }
 );

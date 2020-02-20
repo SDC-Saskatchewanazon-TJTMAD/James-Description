@@ -47,13 +47,15 @@ class App extends React.Component {
           ID: this.state.productId
         }
       })
+      // using optional request to get a request for the specific ID
       .then(response => {
-        console.log(response.data);
+        console.log(response.data.rows[0]);
         this.setState({
-          title: response.data.product_name,
-          description: response.data.product_description,
-          price: response.data.price,
-          ratings: response.data.rating
+          title: response.data.rows[0].product_name,
+          description: response.data.rows[0].product_description,
+          price: response.data.rows[0].price,
+          ratings: response.data.rows[0].rating
+          // then set the state of each part
         });
       })
       .catch(function(error) {
